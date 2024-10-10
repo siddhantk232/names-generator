@@ -589,16 +589,9 @@ const SURNAMES: &[&str] = &[
 /// Generates a random name from the list of adjectives and surnames in this crate
 /// formatted as "adjective-surname-{4-digit-random-number}".
 pub fn get_random(mut rng: impl rand_core::RngCore) -> String {
-    use rand::seq::SliceRandom;
-
     let num = rng.next_u64() % 10000;
-
-    let adj = ADJECTIVES
-        .choose(&mut rng)
-        .expect("ADJECTIVES is not an empty slice");
-    let surname = SURNAMES
-        .choose(&mut rng)
-        .expect("SURNAMES is not an empty slice");
+    let adj = ADJECTIVES[(rng.next_u64() % ADJECTIVES.len() as u64) as usize];
+    let surname = SURNAMES[(rng.next_u64() % SURNAMES.len() as u64) as usize];
 
     format!("{adj}-{surname}-{:04}", num)
 }

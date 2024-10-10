@@ -1,7 +1,10 @@
 [package]
-name = "namegen"
+name = "names-generator"
 version = "0.1.0"
 edition = "2021"
+license-file = "LICENSE"
+description = "A sensible and sufficiently random names generator"
+repository = "https://github.com/siddhantk232/namegen/"
 
 [dependencies]
 false = "0.7.34"
